@@ -5,11 +5,25 @@
     <vendor>yakwilik</vendor>
 
     <depends>com.intellij.modules.platform</depends>
+    <depends optional="true">com.intellij.modules.lang</depends>
+    <depends>idea.plugin.protoeditor</depends>
 
-    <resource-bundle>messages.MyBundle</resource-bundle>
+    <!-- No resource bundle; messages are inline for simplicity -->
 
     <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.yakwilik.intellijeasyp.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
         <postStartupActivity implementation="com.github.yakwilik.intellijeasyp.startup.MyProjectActivity" />
+        <additionalLibraryRootsProvider implementation="com.github.yakwilik.intellijeasyp.references.EasypRootsProvider"/>
+        <projectConfigurable instance="com.github.yakwilik.intellijeasyp.settings.EasypSettingsConfigurable"
+                             id="com.github.yakwilik.intellijeasyp.settings"
+                             groupId="tools"
+                             displayName="Easyp"/>
+        <notificationGroup id="Easyp" displayType="BALLOON"/>
     </extensions>
+
+    <!-- Register with Protobuf EPs -->
+    <extensions defaultExtensionNs="com.intellij.protobuf">
+        <fileResolveProvider implementation="com.github.yakwilik.intellijeasyp.references.EasypPbFileResolveProvider" order="last" />
+    </extensions>
+
+    <projectListeners/>
 </idea-plugin>

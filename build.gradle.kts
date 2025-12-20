@@ -31,8 +31,9 @@ repositories {
 
 // Dependencies are managed with Gradle version catalog - read more: https://docs.gradle.org/current/userguide/version_catalogs.html
 dependencies {
+    // Оставляем только необходимые зависимости
     testImplementation(libs.junit)
-    testImplementation(libs.opentest4j)
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.17.2")
 
     // IntelliJ Platform Gradle Plugin Dependencies Extension - read more: https://plugins.jetbrains.com/docs/intellij/tools-intellij-platform-gradle-plugin-dependencies-extension.html
     intellijPlatform {
