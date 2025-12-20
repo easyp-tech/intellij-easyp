@@ -1,10 +1,10 @@
-package com.github.yakwilik.intellijeasyp.easyp
+package com.github.easyptech.easyp.easypcli
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
-import com.github.yakwilik.intellijeasyp.settings.EasypSettings
+import com.github.easyptech.easyp.settings.EasypSettings
 import com.intellij.execution.configurations.GeneralCommandLine
 import com.intellij.execution.util.ExecUtil
 import com.intellij.openapi.diagnostic.Logger

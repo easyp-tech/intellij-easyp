@@ -1,20 +1,19 @@
 <!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.yakwilik.intellijeasyp</id>
-    <name>intellij-easyp</name>
-    <vendor>yakwilik</vendor>
+    <id>com.github.easyptech.easyp</id>
+    <name>easyp</name>
+    <vendor>easyp-tech</vendor>
 
     <depends>com.intellij.modules.platform</depends>
-    <depends optional="true">com.intellij.modules.lang</depends>
+    <depends optional="true" config-file="easyp-lang.xml">com.intellij.modules.lang</depends>
     <depends>idea.plugin.protoeditor</depends>
 
     <!-- No resource bundle; messages are inline for simplicity -->
 
     <extensions defaultExtensionNs="com.intellij">
-        <postStartupActivity implementation="com.github.yakwilik.intellijeasyp.startup.MyProjectActivity" />
-        <additionalLibraryRootsProvider implementation="com.github.yakwilik.intellijeasyp.references.EasypRootsProvider"/>
-        <projectConfigurable instance="com.github.yakwilik.intellijeasyp.settings.EasypSettingsConfigurable"
-                             id="com.github.yakwilik.intellijeasyp.settings"
+        <postStartupActivity implementation="com.github.easyptech.easyp.startup.MyProjectActivity" />
+        <projectConfigurable instance="com.github.easyptech.easyp.settings.EasypSettingsConfigurable"
+                             id="com.github.easyptech.easyp.settings"
                              groupId="tools"
                              displayName="Easyp"/>
         <notificationGroup id="Easyp" displayType="BALLOON"/>
@@ -22,7 +21,6 @@
 
     <!-- Register with Protobuf EPs -->
     <extensions defaultExtensionNs="com.intellij.protobuf">
-        <fileResolveProvider implementation="com.github.yakwilik.intellijeasyp.references.EasypPbFileResolveProvider" order="last" />
     </extensions>
 
     <projectListeners/>

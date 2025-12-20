@@ -1,6 +1,6 @@
-package com.github.yakwilik.intellijeasyp.references
+package com.github.easyptech.easyp.references
 
-import com.github.yakwilik.intellijeasyp.easyp.EasypImportResolver
+import com.github.easyptech.easyp.easypcli.EasypImportResolver
 import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.LocalFileSystem

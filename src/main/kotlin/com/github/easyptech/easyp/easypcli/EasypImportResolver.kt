@@ -1,4 +1,4 @@
-package com.github.yakwilik.intellijeasyp.easyp
+package com.github.easyptech.easyp.easypcli
 
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service

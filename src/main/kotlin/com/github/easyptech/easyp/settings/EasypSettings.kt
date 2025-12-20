@@ -1,4 +1,4 @@
-package com.github.yakwilik.intellijeasyp.settings
+package com.github.easyptech.easyp.settings
 
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.Service

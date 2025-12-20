@@ -1,7 +1,7 @@
-package com.github.yakwilik.intellijeasyp.startup
+package com.github.easyptech.easyp.startup
 
-import com.github.yakwilik.intellijeasyp.easyp.EasypImportResolver
-import com.github.yakwilik.intellijeasyp.settings.EasypSettings
+import com.github.easyptech.easyp.easypcli.EasypImportResolver
+import com.github.easyptech.easyp.settings.EasypSettings
 import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.startup.ProjectActivity

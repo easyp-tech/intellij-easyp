@@ -1,4 +1,4 @@
-package com.github.yakwilik.intellijeasyp
+package com.github.easyptech.easyp
 
 import com.intellij.ide.highlighter.XmlFileType
 import com.intellij.psi.xml.XmlFile

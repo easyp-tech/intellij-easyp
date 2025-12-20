@@ -1,6 +1,6 @@
-package com.github.yakwilik.intellijeasyp.settings
+package com.github.easyptech.easyp.settings
 
-import com.github.yakwilik.intellijeasyp.easyp.EasypImportResolver
+import com.github.easyptech.easyp.easypcli.EasypImportResolver
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.project.Project
 import com.intellij.ui.components.JBCheckBox
@@ -9,15 +9,17 @@ import com.intellij.ui.components.JBTextField
 import com.intellij.ui.components.panels.VerticalLayout
 import com.intellij.openapi.ui.TextFieldWithBrowseButton
 import com.intellij.openapi.fileChooser.FileChooserDescriptorFactory
-import com.intellij.openapi.ui.TextComponentAccessor
 import javax.swing.JComponent
 import javax.swing.JPanel
 import javax.swing.JButton
 import com.intellij.notification.Notification
 import com.intellij.notification.NotificationType
 import com.intellij.notification.Notifications
+import com.intellij.openapi.application.ApplicationManager
+import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.progress.ProgressIndicator
 import com.intellij.openapi.progress.ProgressManager
+import java.time.Instant
 
 class EasypSettingsConfigurable(private val project: Project) : Configurable {
     private var panel: JPanel? = null
@@ -55,7 +57,7 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
                         val ok = try {
                             EasypImportResolver.getInstance(project).refreshCache()
                         } catch (t: Throwable) {
-                            com.intellij.openapi.diagnostic.Logger.getInstance(EasypSettingsConfigurable::class.java)
+                            Logger.getInstance(EasypSettingsConfigurable::class.java)
                                 .warn("Manual refresh failed: ${t.message}", t)
                             false
                         }
@@ -101,12 +103,12 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
             val shouldRefresh = s.enableProtoImportResolve &&
                 (oldPath != s.easypCliPath || oldCfg != s.configPath || (!oldEnabled && s.enableProtoImportResolve))
             if (shouldRefresh) {
-                val app = com.intellij.openapi.application.ApplicationManager.getApplication()
+                val app = ApplicationManager.getApplication()
                 app.executeOnPooledThread {
                     val ok = try {
                         EasypImportResolver.getInstance(project).refreshCache()
                     } catch (t: Throwable) {
-                        com.intellij.openapi.diagnostic.Logger.getInstance(EasypSettingsConfigurable::class.java)
+                        Logger.getInstance(EasypSettingsConfigurable::class.java)
                             .warn("Apply-triggered refresh failed: ${t.message}", t)
                         false
                     }
@@ -118,7 +120,7 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
             }
         } catch (e: Exception) {
             // Логируем ошибку, но не падаем
-            com.intellij.openapi.diagnostic.Logger.getInstance(EasypSettingsConfigurable::class.java).error("Error applying settings", e)
+            Logger.getInstance(EasypSettingsConfigurable::class.java).error("Error applying settings", e)
         }
     }
 
@@ -131,7 +133,7 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
             updateStatus()
         } catch (e: Exception) {
             // Логируем ошибку, но не падаем
-            com.intellij.openapi.diagnostic.Logger.getInstance(EasypSettingsConfigurable::class.java).error("Error resetting settings", e)
+            Logger.getInstance(EasypSettingsConfigurable::class.java).error("Error resetting settings", e)
         }
     }
 
@@ -142,7 +144,7 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
     private fun updateStatus() {
         val r = EasypImportResolver.getInstance(project)
         val ts = r.getLastRefreshMillis()
-        val time = if (ts > 0) java.time.Instant.ofEpochMilli(ts).toString() else "N/A"
+        val time = if (ts > 0) Instant.ofEpochMilli(ts).toString() else "N/A"
         statusLabel.text = "Last refresh: $time"
     }
 }
