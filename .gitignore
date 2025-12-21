@@ -1,7 +1,8 @@
 .DS_Store
 .gradle
-.idea
+.idea/**
 .intellijPlatform
 .kotlin
 .qodana
 build
+.rules-mcp/

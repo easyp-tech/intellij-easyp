@@ -1,0 +1,8 @@
+<idea-plugin>
+    <extensions defaultExtensionNs="com.intellij">
+        <additionalLibraryRootsProvider implementation="com.github.easyptech.easyp.references.EasypRootsProvider"/>
+    </extensions>
+    <extensions defaultExtensionNs="com.intellij.protobuf">
+        <fileResolveProvider implementation="com.github.easyptech.easyp.references.EasypPbFileResolveProvider" order="last" />
+    </extensions>
+</idea-plugin>
