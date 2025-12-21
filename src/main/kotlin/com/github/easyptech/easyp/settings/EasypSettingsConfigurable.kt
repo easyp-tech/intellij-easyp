@@ -39,10 +39,10 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
                 easypPathField.addBrowseFolderListener(
                     project,
                     FileChooserDescriptorFactory.createSingleFileOrExecutableAppDescriptor()
-                        .withTitle("Select easyp CLI")
+                        .withTitle("Select Easyp CLI")
                 )
 
-                p.add(JBLabel("Path to easyp CLI"))
+                p.add(JBLabel("Path to easyp CLI (optional)"))
                 p.add(easypPathField)
 
                 p.add(JBLabel("Config file (optional)"))
@@ -50,7 +50,7 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
 
                 p.add(enableResolve)
                 refreshButton.addActionListener {
-                    val taskTitle = "Refreshing Easyp cache"
+                    val taskTitle = "Refreshing easyp Cache"
                     ProgressManager.getInstance().runProcessWithProgressSynchronously({
                         val indicator: ProgressIndicator = ProgressManager.getInstance().progressIndicator ?: return@runProcessWithProgressSynchronously
                         indicator.text = "Calling easyp ls-files"
@@ -100,8 +100,7 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
             s.configPath = configPathField.text.ifBlank { null }
             s.enableProtoImportResolve = enableResolve.isSelected
 
-            val shouldRefresh = s.enableProtoImportResolve &&
-                (oldPath != s.easypCliPath || oldCfg != s.configPath || (!oldEnabled && s.enableProtoImportResolve))
+            val shouldRefresh = oldPath != s.easypCliPath || oldCfg != s.configPath || (!oldEnabled && s.enableProtoImportResolve)
             if (shouldRefresh) {
                 val app = ApplicationManager.getApplication()
                 app.executeOnPooledThread {

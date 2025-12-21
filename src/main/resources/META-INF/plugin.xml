@@ -4,6 +4,8 @@
     <name>easyp</name>
     <vendor>easyp-tech</vendor>
 
+    <icon>/META-INF/pluginIcon.svg</icon>
+
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="easyp-lang.xml">com.intellij.modules.lang</depends>
     <depends>idea.plugin.protoeditor</depends>

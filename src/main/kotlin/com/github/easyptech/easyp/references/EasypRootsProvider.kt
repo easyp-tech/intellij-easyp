@@ -2,7 +2,6 @@ package com.github.easyptech.easyp.references
 
 import com.github.easyptech.easyp.easypcli.EasypImportResolver
 import com.github.easyptech.easyp.settings.EasypSettings
-import com.intellij.openapi.diagnostic.Logger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.AdditionalLibraryRootsProvider
 import com.intellij.openapi.roots.SyntheticLibrary
@@ -22,7 +21,6 @@ import com.intellij.openapi.vfs.VirtualFileManager
  * 3. Файловая система (VFS) не будет следить за изменениями в этих папках.
  */
 class EasypRootsProvider : AdditionalLibraryRootsProvider() {
-    private val log = Logger.getInstance(EasypRootsProvider::class.java)
 
     /**
      * Возвращает список директорий, за которыми IDE должна следить (индексировать).

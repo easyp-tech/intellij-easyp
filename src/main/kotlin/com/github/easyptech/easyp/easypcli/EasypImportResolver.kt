@@ -242,14 +242,6 @@ class EasypImportResolver(private val project: Project) {
         return roots
     }
 
-    /**
-     * Вспомогательный метод для получения файла внутри проекта.
-     */
-    fun getWorkspaceFile(relativePath: String): File? {
-        return workspaceFiles[relativePath]?.takeIf { it.exists() }
-    }
-
-    fun getCachedResponse(): LsFilesResponse? = cachedResponse
     fun getLastRefreshMillis(): Long = lastRefreshMillis
 
     companion object {

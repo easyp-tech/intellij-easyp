@@ -9,7 +9,7 @@ import com.intellij.openapi.components.service
 
 @Service(Service.Level.PROJECT)
 @State(name = "EasypSettings", storages = [Storage("easyp_settings.xml")])
-class EasypSettings(private val project: Project) : PersistentStateComponent<EasypSettings.State> {
+class EasypSettings : PersistentStateComponent<EasypSettings.State> {
     data class State(
         var easypCliPath: String? = null,
         var configPath: String? = null,

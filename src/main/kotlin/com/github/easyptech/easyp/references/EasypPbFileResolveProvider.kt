@@ -95,7 +95,7 @@ class EasypPbFileResolveProvider : FileResolveProvider {
         for (root in roots) {
             val vDir = lfs.refreshAndFindFileByIoFile(root) ?: continue
             val dirScope = GlobalSearchScopesCore.directoryScope(project, vDir, true)
-            scope = if (scope == null) dirScope else scope.union(dirScope)
+            scope = scope?.union(dirScope) ?: dirScope
         }
         return scope ?: GlobalSearchScope.EMPTY_SCOPE
     }
