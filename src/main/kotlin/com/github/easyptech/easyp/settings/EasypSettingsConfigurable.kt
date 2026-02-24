@@ -45,7 +45,7 @@ class EasypSettingsConfigurable(private val project: Project) : Configurable {
                 p.add(JBLabel("Path to easyp CLI (optional)"))
                 p.add(easypPathField)
 
-                p.add(JBLabel("Config file (optional)"))
+                p.add(JBLabel("Config file (optional, default: easyp.yaml in project root; relative path is from project root)"))
                 p.add(configPathField)
 
                 p.add(enableResolve)

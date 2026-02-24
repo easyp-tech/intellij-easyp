@@ -4,11 +4,10 @@
     <name>easyp</name>
     <vendor>easyp-tech</vendor>
 
-    <icon>/META-INF/pluginIcon.svg</icon>
-
     <depends>com.intellij.modules.platform</depends>
     <depends optional="true" config-file="easyp-lang.xml">com.intellij.modules.lang</depends>
     <depends>idea.plugin.protoeditor</depends>
+    <depends>org.jetbrains.plugins.yaml</depends>
 
     <!-- No resource bundle; messages are inline for simplicity -->
 
@@ -19,6 +18,11 @@
                              groupId="tools"
                              displayName="Easyp"/>
         <notificationGroup id="Easyp" displayType="BALLOON"/>
+
+        <externalAnnotator language="yaml" implementationClass="com.github.easyptech.easyp.easypcli.EasypConfigAnnotator"/>
+        <completion.contributor language="yaml" implementationClass="com.github.easyptech.easyp.easypcli.EasypConfigCompletionContributor" order="first"/>
+        <typedHandler implementationClass="com.github.easyptech.easyp.easypcli.EasypConfigCompletionTypedHandler"/>
+        <enterHandlerDelegate implementationClass="com.github.easyptech.easyp.easypcli.EasypConfigCompletionEnterHandler"/>
     </extensions>
 
     <!-- Register with Protobuf EPs -->
